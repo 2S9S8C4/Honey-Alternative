@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Coupon Finder Options</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main class="options">
+      <h1>Coupon Finder Options</h1>
+
+      <section>
+        <h2>Coupon data source</h2>
+        <label>
+          <input type="radio" name="provider" value="mock" checked />
+          Mock provider (sample data, no setup required)
+        </label>
+        <label>
+          <input type="radio" name="provider" value="couponapi.org" />
+          CouponAPI.org (requires an API key)
+        </label>
+
+        <div id="api-key-field" class="hidden">
+          <label for="api-key">API key</label>
+          <input type="text" id="api-key" placeholder="Your couponapi.org API key" />
+          <p class="hint">
+            Sign up at couponapi.org to get a key. Until a key is set, this
+            provider will report an error and results won't be found.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Excluded sites</h2>
+        <textarea id="excluded-domains" rows="4" placeholder="one domain per line, e.g. example.com"></textarea>
+      </section>
+
+      <button id="save-btn" type="button">Save</button>
+      <p id="save-status" class="hint"></p>
+
+      <section>
+        <h2>Your cards</h2>
+        <p class="hint">
+          Card nicknames and reward rates only &mdash; no card numbers are
+          stored. Built-in rates are a static snapshot and may not reflect
+          current issuer terms; this isn't financial advice.
+        </p>
+
+        <div class="card-add-row">
+          <select id="builtin-card-select"></select>
+          <button id="add-builtin-card-btn" type="button">Add</button>
+        </div>
+
+        <details>
+          <summary>Add a custom card</summary>
+          <div class="custom-card-form">
+            <label for="custom-nickname">Nickname</label>
+            <input type="text" id="custom-nickname" placeholder="e.g. My Rewards Card" />
+
+            <label for="custom-network">Network</label>
+            <select id="custom-network">
+              <option>Visa</option>
+              <option>Amex</option>
+              <option>Mastercard</option>
+              <option>Discover</option>
+            </select>
+
+            <label for="custom-issuer">Issuer</label>
+            <input type="text" id="custom-issuer" placeholder="e.g. My Bank" />
+
+            <div id="custom-rate-fields"></div>
+
+            <button id="add-custom-card-btn" type="button">Add Custom Card</button>
+          </div>
+        </details>
+
+        <ul id="saved-cards-list"></ul>
+      </section>
+    </main>
+    <script src="options.js"></script>
+  </body>
+</html>

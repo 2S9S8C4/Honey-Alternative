@@ -1,0 +1,20 @@
+{
+  "test-checkout.local": [
+    { "code": "SAVE10", "source": "mock", "description": "10% off" },
+    { "code": "WELCOME5", "source": "mock", "description": "$5 off" },
+    { "code": "FREESHIP", "source": "mock", "description": "Free shipping" },
+    { "code": "SAVE25", "source": "mock", "description": "25% off - best deal" },
+    { "code": "EXPIRED2020", "source": "mock", "description": "Invalid/expired code" }
+  ],
+  "localhost": [
+    { "code": "SAVE10", "source": "mock", "description": "10% off" },
+    { "code": "WELCOME5", "source": "mock", "description": "$5 off" },
+    { "code": "FREESHIP", "source": "mock", "description": "Free shipping" },
+    { "code": "SAVE25", "source": "mock", "description": "25% off - best deal" },
+    { "code": "EXPIRED2020", "source": "mock", "description": "Invalid/expired code" }
+  ],
+  "example-shop.com": [
+    { "code": "WELCOME10", "source": "mock", "description": "10% off first order" },
+    { "code": "SUMMER20", "source": "mock", "description": "20% off summer sale" }
+  ]
+}

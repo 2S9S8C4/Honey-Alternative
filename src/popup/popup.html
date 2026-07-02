@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Coupon Finder</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="popup">
+      <header>
+        <h1>Coupon Finder</h1>
+        <label class="toggle">
+          <input type="checkbox" id="enabled-toggle" checked />
+          <span>Enabled</span>
+        </label>
+      </header>
+
+      <nav class="tabs">
+        <button type="button" class="tab-btn active" data-tab-target="coupons">Coupons</button>
+        <button type="button" class="tab-btn" data-tab-target="cards">Cards</button>
+        <button type="button" class="tab-btn" data-tab-target="bnpl">BNPL</button>
+      </nav>
+
+      <div data-tab="coupons">
+        <button id="find-btn" type="button">Find Coupons</button>
+
+        <section id="status" class="status" aria-live="polite">
+          Idle
+        </section>
+
+        <section id="result" class="result hidden">
+          <p>
+            Applied code <strong id="result-code"></strong>
+          </p>
+          <p>
+            Saved <strong id="result-savings"></strong>
+          </p>
+        </section>
+      </div>
+
+      <div data-tab="cards" class="hidden">
+        <p class="category-label">
+          Category: <strong id="card-category"></strong>
+        </p>
+        <ul id="card-ranking-list" class="card-list"></ul>
+        <p id="no-cards-message" class="hint hidden">
+          No cards added yet. Add some in Options.
+        </p>
+      </div>
+
+      <div data-tab="bnpl" class="hidden">
+        <ul id="bnpl-list" class="bnpl-list"></ul>
+        <p id="bnpl-status" class="hint">Scanning...</p>
+      </div>
+
+      <footer>
+        <a href="options.html" target="_blank" rel="noopener">Options</a>
+      </footer>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Test Checkout</title>
+    <style>
+      body { font-family: system-ui, sans-serif; max-width: 420px; margin: 40px auto; }
+      .cart-item { display: flex; justify-content: space-between; margin-bottom: 8px; }
+      .row { display: flex; gap: 8px; margin: 16px 0; }
+      input { flex: 1; padding: 6px; }
+      button { padding: 6px 12px; }
+      .total { font-size: 18px; font-weight: bold; margin-top: 16px; }
+      #promo-message { font-size: 13px; color: #555; min-height: 1.2em; }
+    </style>
+  </head>
+  <body>
+    <h1>Test Checkout</h1>
+
+    <div class="cart-item"><span>Widget</span><span>$40.00</span></div>
+    <div class="cart-item"><span>Gadget</span><span>$60.00</span></div>
+
+    <div class="row">
+      <input type="text" id="promo-code" name="promoCode" placeholder="Coupon code" />
+      <button id="apply-coupon" type="button">Apply</button>
+    </div>
+    <div id="promo-message"></div>
+
+    <div class="total" id="cart-total">Total: $100.00</div>
+
+    <script>
+      const BASE_TOTAL = 100;
+      const CODES = {
+        SAVE10: { type: "percent", value: 10 },
+        WELCOME5: { type: "flat", value: 5 },
+        FREESHIP: { type: "flat", value: 0 },
+        SAVE25: { type: "percent", value: 25 },
+      };
+
+      const input = document.getElementById("promo-code");
+      const button = document.getElementById("apply-coupon");
+      const totalEl = document.getElementById("cart-total");
+      const messageEl = document.getElementById("promo-message");
+
+      button.addEventListener("click", () => {
+        const code = input.value.trim().toUpperCase();
+        const rule = CODES[code];
+
+        // Simulate a bit of network/UI latency before updating the total.
+        setTimeout(() => {
+          if (!rule) {
+            totalEl.textContent = `Total: $${BASE_TOTAL.toFixed(2)}`;
+            messageEl.textContent = code ? `"${code}" is not valid.` : "";
+            return;
+          }
+
+          const discounted =
+            rule.type === "percent"
+              ? BASE_TOTAL * (1 - rule.value / 100)
+              : BASE_TOTAL - rule.value;
+
+          totalEl.textContent = `Total: $${discounted.toFixed(2)}`;
+          messageEl.textContent = `Applied "${code}".`;
+        }, 400);
+      });
+    </script>
+  </body>
+</html>

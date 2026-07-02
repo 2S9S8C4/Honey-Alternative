@@ -1,0 +1,26 @@
+{
+  "name": "honey-alt",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Browser extension that tries multiple coupon codes and applies the best one.",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx build/build.ts --watch",
+    "build": "tsx build/build.ts --production",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "webextension-polyfill": "^0.12.0"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.278",
+    "@types/node": "^22.7.4",
+    "@types/webextension-polyfill": "^0.12.1",
+    "esbuild": "^0.23.1",
+    "jsdom": "^25.0.1",
+    "playwright": "^1.61.1",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2",
+    "vitest": "^2.1.1"
+  }
+}
